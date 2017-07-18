@@ -1,8 +1,11 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #pragma once
-
 #include "CoreMinimal.h"
+#include "Engine/World.h"
+#include "Engine/TriggerVolume.h"
+#include "Gameframework/Pawn.h"
+#include "Gameframework/PlayerController.h"
 #include "Components/ActorComponent.h"
 #include "OpenDoor.generated.h"
 
@@ -20,10 +23,19 @@ protected:
 	// Called when the game starts
 	virtual void BeginPlay() override;
 
+	void OpenDoor();
+
 public:	
 	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
-		
+private:
+	UPROPERTY(VisibleAnywhere)
+		float OpenAngel = 90;
+
+	UPROPERTY(EditAnywhere)
+		ATriggerVolume * PressurePlate;
+
+		AActor * ActorThatOpens;
 	
 };
